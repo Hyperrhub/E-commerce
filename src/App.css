@@ -1,38 +1,351 @@
-.App {
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: #333;
+  color: white;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+}
+/* Product List */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  padding: 15px;
+  transition: transform 0.2s ease-in-out;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.product-card h3 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.product-card p {
+  font-size: 16px;
+  color: #888;
+  margin-bottom: 15px;
+}
+
+.product-card .price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #b12704; /* Amazon's price color */
+  margin-bottom: 15px;
+}
+
+.product-card a,
+.product-card button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.product-card a {
+  background-color: #007185; /* Amazon link color */
   color: white;
+  padding: 10px;
+  border-radius: 3px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.product-card a:hover {
+  background-color: #005f70;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.product-card button {
+  background-color: #f0c14b;
+  border: 1px solid #a88734;
+  padding: 10px 20px;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+}
+
+.product-card button:hover {
+  background-color: #ecb02d;
+}
+
+.product-card button:active {
+  background-color: #d9a029;
+}
+
+/* Product Details */
+.product-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.product-details img {
+  max-width: 40%;
+  height: auto;
+  border-radius: 5px;
+  object-fit: contain;
+  flex: 1 1 40%;
+}
+
+.product-details-info {
+  flex: 1 1 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-details-info h2 {
+  font-size: 28px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.product-details-info .price {
+  font-size: 24px;
+  font-weight: 700;
+  color: #b12704; /* Amazon's price color */
+  margin-bottom: 20px;
+}
+
+.product-details-info p {
+  font-size: 16px;
+  color: #565959;
+  margin-bottom: 20px;
+}
+
+.product-details-info button {
+  background-color: #f0c14b;
+  border: 1px solid #a88734;
+  padding: 15px 20px;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+}
+
+.product-details-info button:hover {
+  background-color: #ecb02d;
+}
+
+.product-details-info button:active {
+  background-color: #d9a029;
+}
+
+/* Cart Component */
+.cart {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.cart h2 {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-item img {
+  width: 120px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.cart-item-details {
+  flex-grow: 2;
+}
+
+.cart-item-title {
+  font-size: 18px;
+  font-weight: 400;
+  color: #007185; /* Amazon's link color */
+  margin-bottom: 5px;
+}
+
+.cart-item-price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #b12704; /* Amazon's price color */
+  margin-bottom: 5px;
+}
+
+.cart-item-actions {
+  text-align: right;
+  margin-left: 20px;
+}
+
+.cart-item-actions button {
+  background-color: #f0c14b;
+  border: 1px solid #a88734;
+  padding: 15px 20px;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+}
+
+.cart-item-actions button:hover {
+  background-color: #e6e8e8;
+}
+
+.cart-total {
+  text-align: right;
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 20px;
+  color: #b12704; /* Amazon's price color */
+}
+
+.cart-total span {
+  font-weight: 400;
+  color: #565959;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .product-details {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .product-details img {
+    max-width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .product-details-info {
+    text-align: center;
+    flex: 1 1 100%;
+  }
+
+  .product-details-info h2 {
+    font-size: 24px;
+  }
+
+  .product-details-info .price {
+    font-size: 22px;
+  }
+
+  .product-details-info p {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-card img {
+    max-width: 80%;
+  }
+
+  .product-card h3 {
+    font-size: 16px;
+  }
+
+  .product-card p {
+    font-size: 14px;
+  }
+
+  .product-card .price {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cart {
+    padding: 15px;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cart-item img {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .cart-item-details {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .cart-item-actions {
+    width: 100%;
+    text-align: right;
   }
 }
